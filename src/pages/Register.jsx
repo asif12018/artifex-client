@@ -17,7 +17,7 @@ const Register = () => {
     //toaster alert
     const signUpSuccess = () => toast("register successfull");
     //data from context api
-    const { createUser, setUser, user } = useContext(AuthContext)
+    const { createUser, setUser, user, userLogin } = useContext(AuthContext)
     // console.log(user.displayName)
     // console.log(user.photoURL)
     //registration function
@@ -63,9 +63,27 @@ const Register = () => {
                     console.log('profile and name set')
                     setUser(auth.currentUser)
                     signUpSuccess();
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000)
+                    // setTimeout(() => {
+                    //     window.location.reload();
+                    // }, 2000)
+                    //login user after successful registration
+                    userLogin(email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        console.log(user);
+                        setUser(user);
+                        form.reset();
+                        
+                        // ...
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage)
+                        
+                        
+                    });
                     // ...
                 }).catch((error) => {
                     // An error occurred
