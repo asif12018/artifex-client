@@ -8,18 +8,46 @@ const EditProduct = () => {
     const handleEditItem = (e) =>{
         e.preventDefault();
         const form = e.target;
-        const itemName = form.item_name.value;
-        const photo = form.photo.value;
-        const subcategory = form.subcategory_name.value;
-        const description = form.description.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const customize = form.customization.value;
-        const process = form.process.value;
-        const stock = form.stock.value;
+        let itemName = form.item_name.value;
+        if(!itemName){
+            itemName = item.itemName;
+        }
+        let photo = form.photo.value;
+        if(!photo){
+            photo = item.photo;
+        }
+        let subcategory = form.subcategory_name.value;
+        if(!subcategory){
+            subcategory = item.subcategory;
+        }
+        let description = form.description.value;
+        if(!description){
+            description = item.description;
+        }
+        let price = form.price.value;
+        if(!price){
+            price = item.price;
+        }
+        let rating = form.rating.value;
+        if(!rating){
+            rating = item.rating;
+        }
+        let customize = form.customization.value;
+        if(!customize){
+            customize = item.customize;
+        }
+        let process = form.process.value;
+        if(!process){
+            process = item.process;
+        }
+        
+        let stock = form.stock.value;
+        if(!stock){
+            stock = item.stock;
+        }
         
         const itemData = { photo, subcategory, description, price, rating, customize, process, stock, itemName}
-
+        console.log(itemData)
     }
     return (
         <div>
@@ -86,14 +114,14 @@ const EditProduct = () => {
                     <div className="">
                         <label className="mt-4 mb-2 block text-sm font-medium">item name</label>
                         <div className="relative">
-                            <input type="text" name="item_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the item name" required/>
+                            <input type="text" name="item_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the item name" />
                             <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 
                             </div>
                         </div>
                         <label className="mt-4 mb-2 block text-sm font-medium">item image url</label>
                         <div className="relative">
-                            <input type="text" name="photo" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the image url" required/>
+                            <input type="text" name="photo" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the image url" />
 
                         </div>
 
@@ -111,7 +139,7 @@ const EditProduct = () => {
 
                         <label className="mt-4 mb-2 block text-sm font-medium">price</label>
                         <div className="relative">
-                            <input type="text" name="price" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the price" required/>
+                            <input type="text" name="price" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the price" />
 
                         </div>
 
@@ -135,7 +163,7 @@ const EditProduct = () => {
 
                         <label className="mt-4 mb-2 block text-sm font-medium">stock status</label>
                         <div className="relative">
-                            <input type="text" name="stock" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the stock status" required/>
+                            <input type="text" name="stock" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the stock status" />
 
                         </div>
 
