@@ -1,16 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from './../components/provider/AuthProvider';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import { useLoaderData } from "react-router-dom";
 
 
-const Addproduct = () => {
-     // context api data
-     const {user} = useContext(AuthContext);
-     
-
-    //add item function
-    const handleAddItems = e => {
+const EditProduct = () => {
+    const item = useLoaderData();
+    console.log(item);
+    //edit item function
+    const handleEditItem = (e) =>{
         e.preventDefault();
         const form = e.target;
         const itemName = form.item_name.value;
@@ -22,32 +17,14 @@ const Addproduct = () => {
         const customize = form.customization.value;
         const process = form.process.value;
         const stock = form.stock.value;
-        const email = user.email;
-        const name = user.displayName;
-        const itemData = {name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email}
-        // console.log(itemData);
-        fetch(`http://localhost:5000/`,{
-            method: 'POST',
-            headers:{
-                'content-type':'application/json'
-        },
-           body: JSON.stringify(itemData)
-        })
-        .then(res => res.json())
-        .then(data => {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Product added successfully',
-                icon: 'success',
-                confirmButtonText: 'okk'
-              })
-              form.reset();
-            console.log(data)})
+        
+        const itemData = { photo, subcategory, description, price, rating, customize, process, stock, itemName}
+
     }
     return (
         <div>
             <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
-                <a href="#" className="text-2xl font-bold text-gray-800">Add Items</a>
+                <a href="#" className="text-2xl font-bold text-gray-800">Edit Items</a>
                 <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
                     <div className="relative">
                         <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
@@ -103,7 +80,7 @@ const Addproduct = () => {
 
 
                 </div>
-                <form onSubmit={handleAddItems } className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+                <form onSubmit={handleEditItem } className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
                     <p className="text-xl font-medium">Add Item Details</p>
                     <p className="text-gray-400">Complete this form to add items</p>
                     <div className="">
@@ -122,13 +99,13 @@ const Addproduct = () => {
 
                         <label className="mt-4 mb-2 block text-sm font-medium">subcategory_name</label>
                         <div className="relative">
-                            <input type="text" name="subcategory_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" required/>
+                            <input type="text" name="subcategory_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" />
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">short description</label>
                         <div className="relative">
-                            <input type="text" name="description" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" required/>
+                            <input type="text" name="description" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" />
 
                         </div>
 
@@ -140,19 +117,19 @@ const Addproduct = () => {
 
                         <label className="mt-4 mb-2 block text-sm font-medium">rating</label>
                         <div className="relative">
-                            <input type="text" name="rating" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the rating" required/>
+                            <input type="text" name="rating" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the rating" />
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">customization possible ? yes or no</label>
                         <div className="relative">
-                            <input type="text" name="customization" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the customization" required/>
+                            <input type="text" name="customization" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the customization" />
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">process time</label>
                         <div className="relative">
-                            <input type="text" name="process" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the process time" required/>
+                            <input type="text" name="process" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the process time" />
 
                         </div>
 
@@ -172,11 +149,11 @@ const Addproduct = () => {
 
 
                     </div>
-                    <button type="submit" className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Add Item</button>
+                    <button type="submit" className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Update</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default Addproduct;
+export default EditProduct;

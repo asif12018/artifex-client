@@ -16,6 +16,7 @@ import ItemDetails from './pages/ItemDetails.jsx';
 import AllItems from './pages/AllItems.jsx';
 import PrivateRoutes from './components/protectedRoute/PrivateRoutes.jsx';
 import MyItems from './pages/MyItems.jsx';
+import EditProduct from './pages/EditProduct';
 
 
 
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
       {
         path:'/myItems',
         element:<PrivateRoutes><MyItems></MyItems></PrivateRoutes>
+      },
+      {
+        path:'/edit/:id',
+        element:<EditProduct></EditProduct>,
+        loader: ({params})=>fetch(`http://localhost:5000/items/${params.id}`)
       }
     ]
   },
