@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import {  createContext, useEffect, useState } from "react";
 import auth from './../firebase/firebase.config';
 
@@ -9,6 +9,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({children}) => {
   // google and github provider
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider(); 
   //state for user data
     const [user, setUser] = useState(null);
     //state for loading
@@ -37,6 +38,11 @@ const AuthProvider = ({children}) => {
            return signInWithPopup(auth, googleProvider)
         }
 
+        //login using github account
+        const githubLogin = () =>{
+            return signInWithPopup(auth, githubProvider)
+        }
+
      //useEffect to use observe on state change
      useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -53,7 +59,7 @@ const AuthProvider = ({children}) => {
         return () =>  unSubscribe();
     },[])
 
-    const authInfo = {user, setUser, loading, setLoading, createUser, userSignOut, userLogin, googleLogin}
+    const authInfo = {user, setUser, loading, setLoading, createUser, userSignOut, userLogin, googleLogin, githubLogin}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

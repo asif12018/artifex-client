@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa6";
+import { IoLogoGithub } from "react-icons/io";
 
 const Register = () => {
     //password show state
@@ -18,7 +19,7 @@ const Register = () => {
     //toaster alert
     const signUpSuccess = () => toast("register successfull");
     //data from context api
-    const { createUser, setUser, user, userLogin, googleLogin} = useContext(AuthContext)
+    const { createUser, setUser, user, userLogin, googleLogin, githubLogin} = useContext(AuthContext)
     // console.log(user.displayName)
     // console.log(user.photoURL)
     //registration function
@@ -116,12 +117,32 @@ const Register = () => {
             // The signed-in user info.
             const user = result.user;
             setUser(user);
+            signUpSuccess();
             // ...
           }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
+            // ...
+          });
+    }
+
+    //github login
+    const handleGithubLogin = () =>{
+        githubLogin()
+        .then((result) => {
+        
+        
+            
+            const user = result.user;
+            setUser(user);
+            signUpSuccess();
+            // ...
+          }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            console.log(error)
             // ...
           });
     }
@@ -179,6 +200,8 @@ const Register = () => {
                         <input type="submit" className="btn bg-[#2d8e82] text-white" value="create account" />
 
                         <button onClick={handleGoogleLogin} className="btn bg-[#d35811] text-white"> signup using google  <FaGoogle /></button>
+
+                        <button onClick={handleGithubLogin} className="btn bg-[#0f1a4b] text-white"> signup using github  <IoLogoGithub /></button>
 
                         <div className="text-center text-sm text-grey-dark mt-4">
                             By signing up, you agree to the
