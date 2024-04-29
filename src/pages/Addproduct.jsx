@@ -1,13 +1,19 @@
+import { useContext } from "react";
+import { AuthContext } from './../components/provider/AuthProvider';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 const Addproduct = () => {
-
+     // context api data
+     const {user} = useContext(AuthContext);
+     
 
     //add item function
     const handleAddItems = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.item_name.value;
+        const itemName = form.item_name.value;
         const photo = form.photo.value;
         const subcategory = form.subcategory_name.value;
         const description = form.description.value;
@@ -16,7 +22,27 @@ const Addproduct = () => {
         const customize = form.customization.value;
         const process = form.process.value;
         const stock = form.stock.value;
-        console.log(name, photo, subcategory, description, price, rating, customize, process, stock)
+        const email = user.email;
+        const name = user.displayName;
+        const itemData = {name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email}
+        // console.log(itemData);
+        fetch(`http://localhost:5000/`,{
+            method: 'POST',
+            headers:{
+                'content-type':'application/json'
+        },
+           body: JSON.stringify(itemData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Product added successfully',
+                icon: 'success',
+                confirmButtonText: 'okk'
+              })
+              form.reset();
+            console.log(data)})
     }
     return (
         <div>
@@ -83,56 +109,56 @@ const Addproduct = () => {
                     <div className="">
                         <label className="mt-4 mb-2 block text-sm font-medium">item name</label>
                         <div className="relative">
-                            <input type="text" name="item_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the item name" />
+                            <input type="text" name="item_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the item name" required/>
                             <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
 
                             </div>
                         </div>
                         <label className="mt-4 mb-2 block text-sm font-medium">item image url</label>
                         <div className="relative">
-                            <input type="text" name="photo" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the image url" />
+                            <input type="text" name="photo" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the image url" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">subcategory_name</label>
                         <div className="relative">
-                            <input type="text" name="subcategory_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" />
+                            <input type="text" name="subcategory_name" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">short description</label>
                         <div className="relative">
-                            <input type="text" name="description" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" />
+                            <input type="text" name="description" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the subcategory_name" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">price</label>
                         <div className="relative">
-                            <input type="text" name="price" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the price" />
+                            <input type="text" name="price" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the price" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">rating</label>
                         <div className="relative">
-                            <input type="text" name="rating" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the rating" />
+                            <input type="text" name="rating" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the rating" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">customization possible ? yes or no</label>
                         <div className="relative">
-                            <input type="text" name="customization" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the customization" />
+                            <input type="text" name="customization" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the customization" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">process time</label>
                         <div className="relative">
-                            <input type="text" name="process" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the process time" />
+                            <input type="text" name="process" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the process time" required/>
 
                         </div>
 
                         <label className="mt-4 mb-2 block text-sm font-medium">stock status</label>
                         <div className="relative">
-                            <input type="text" name="stock" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the stock status" />
+                            <input type="text" name="stock" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the stock status" required/>
 
                         </div>
 

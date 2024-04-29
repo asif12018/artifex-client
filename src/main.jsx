@@ -12,6 +12,10 @@ import AuthProvider from './components/provider/AuthProvider.jsx';
 import Register from './pages/Register.jsx';
 import Login from './pages/login/Login.jsx';
 import Addproduct from './pages/Addproduct.jsx';
+import ItemDetails from './pages/ItemDetails.jsx';
+import AllItems from './pages/AllItems.jsx';
+
+
 
 
 
@@ -36,6 +40,15 @@ const router = createBrowserRouter([
       {
         path:"/add",
         element:<Addproduct></Addproduct>
+      },
+      {
+        path:"/details/:id",
+        element:<ItemDetails></ItemDetails>,
+        loader:({params})=> fetch(`http://localhost:5000/items/${params.id}`)
+      },
+      {
+        path:"/items",
+        element:<AllItems></AllItems>
       }
     ]
   },
