@@ -117,6 +117,7 @@ const Register = () => {
             // The signed-in user info.
             const user = result.user;
             setUser(user);
+            console.log(user)
             signUpSuccess();
             // ...
           }).catch((error) => {
@@ -137,6 +138,7 @@ const Register = () => {
             
             const user = result.user;
             setUser(user);
+            console.log(user)
             signUpSuccess();
             // ...
           }).catch((error) => {

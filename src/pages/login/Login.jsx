@@ -5,6 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa6";
+import { IoLogoGithub } from "react-icons/io";
 
 const Login = () => {
     //password show state
@@ -14,7 +16,7 @@ const Login = () => {
     //invalid password state
     const [wrong, setWrong] = useState(false);
     //context api data
-    const { userLogin, setUser } = useContext(AuthContext);
+    const { userLogin, setUser, googleLogin, githubLogin } = useContext(AuthContext);
     //login function
     const handleLogin = e => {
         setWrong(false);
@@ -43,6 +45,46 @@ const Login = () => {
                 }, 4000)
                 form.reset();
             });
+    }
+
+    //google login function
+    const handleGoogleLogin = () =>{
+        googleLogin()
+        .then((result) => {
+            
+            // The signed-in user info.
+            const user = result.user;
+            setUser(user);
+            console.log(user)
+            signInSuccess()
+            // ...
+          }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            // ...
+          });
+    }
+
+    //github login
+    const handleGithubLogin = () =>{
+        githubLogin()
+        .then((result) => {
+        
+        
+            
+            const user = result.user;
+            setUser(user);
+            console.log(user)
+            signInSuccess()
+            // ...
+          }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            console.log(error)
+            // ...
+          });
     }
     return (
         <div>
@@ -84,6 +126,10 @@ const Login = () => {
 
 
                         <input type="submit" className="btn bg-[#2d8e82] text-white" value="sign in" />
+
+                        <button onClick={handleGoogleLogin} className="btn bg-[#d35811] text-white"> signup using google  <FaGoogle /></button>
+
+                        <button onClick={handleGithubLogin} className="btn bg-[#0f1a4b] text-white"> signup using github  <IoLogoGithub /></button>
 
                         <div className="text-center text-sm text-grey-dark mt-4">
                             By signing , you agree to the 

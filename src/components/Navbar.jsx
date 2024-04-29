@@ -52,8 +52,8 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user ? <><div className="w-10 rounded-full">
-                    <img className="rounded-full " alt="Tailwind CSS Navbar component" src={user?.photoURL} />
-                  </div><a onClick={handleLogOut} className="btn mx-2">logout</a></> : <Link to={'/login'} className="btn">login</Link>
+                    <img title={user.displayName ? user.displayName : 'user login using github thats the reason its not have display name'} className="rounded-full " alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+                  </div><a onClick={handleLogOut} className="btn mx-2 bg-red-400 text-white">logout</a></> : <><Link to={'/login'} className="btn bg-[#2d8e82] text-white">login</Link > <Link className="btn mx-2 bg-blue-400 text-white" to={'/register'}>register</Link></>
                 }
             </div>
         </div>
