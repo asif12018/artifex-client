@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../components/firebase/firebase.config";
@@ -12,6 +12,7 @@ import { FaGoogle } from "react-icons/fa6";
 import { IoLogoGithub } from "react-icons/io";
 
 const Register = () => {
+    const navigate = useNavigate()
     //password show state
     const [show, setShow] = useState(false);
     //wrong password state
@@ -19,7 +20,7 @@ const Register = () => {
     //toaster alert
     const signUpSuccess = () => toast("register successfull");
     //data from context api
-    const { createUser, setUser, user, userLogin, googleLogin, githubLogin} = useContext(AuthContext)
+    const { createUser, setUser, user, userLogin, googleLogin, githubLogin } = useContext(AuthContext)
     // console.log(user.displayName)
     // console.log(user.photoURL)
     //registration function
@@ -55,7 +56,7 @@ const Register = () => {
                 // Signed up 
                 const user = userCredential.user;
                 console.log(user);
-                
+
                 // ...
                 //add user name and photo
                 updateProfile(auth.currentUser, {
@@ -70,27 +71,33 @@ const Register = () => {
                     // }, 2000)
                     //login user after successful registration
                     userLogin(email, password)
-                    .then((userCredential) => {
-                        // Signed in 
-                        const user = userCredential.user;
-                        console.log(user);
-                        setUser(user);
-                        form.reset();
-                        
-                        // ...
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        console.log(errorMessage)
-                        
-                        
-                    });
+                        .then((userCredential) => {
+                            // Signed in 
+                            const user = userCredential.user;
+                            console.log(user);
+                            setUser(user);
+                            form.reset();
+                            //auto navigate
+                            setTimeout(() => {
+
+                               navigate('/')
+
+                            }, 3000)
+
+                            // ...
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            console.log(errorMessage)
+
+
+                        });
                     // ...
                 }).catch((error) => {
                     // An error occurred
                     console.log(error);
-                    
+
                     // ...
                 });
             })
@@ -105,48 +112,60 @@ const Register = () => {
                 // ..
             });
 
-            
+
 
     }
 
     //google login function
-    const handleGoogleLogin = () =>{
+    const handleGoogleLogin = () => {
         googleLogin()
-        .then((result) => {
-            
-            // The signed-in user info.
-            const user = result.user;
-            setUser(user);
-            console.log(user)
-            signUpSuccess();
-            // ...
-          }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorMessage);
-            // ...
-          });
+            .then((result) => {
+
+                // The signed-in user info.
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+                signUpSuccess();
+                //auto navigate
+                setTimeout(()=>{
+                   
+                    navigate('/')
+                    
+                 },3000)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                // ...
+            });
     }
 
     //github login
-    const handleGithubLogin = () =>{
+    const handleGithubLogin = () => {
         githubLogin()
-        .then((result) => {
-        
-        
-            
-            const user = result.user;
-            setUser(user);
-            console.log(user)
-            signUpSuccess();
-            // ...
-          }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            console.log(error)
-            // ...
-          });
+            .then((result) => {
+
+
+
+                const user = result.user;
+                setUser(user);
+                console.log(user)
+                signUpSuccess();
+                //auto navigate
+                setTimeout(()=>{
+                   
+                    navigate('/')
+                    
+                 },3000)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                console.log(error)
+                // ...
+            });
     }
     return (
         <div>

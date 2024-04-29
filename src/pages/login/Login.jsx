@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { AuthContext } from "../../components/provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,6 +9,8 @@ import { FaGoogle } from "react-icons/fa6";
 import { IoLogoGithub } from "react-icons/io";
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     //password show state
     const [show, setShow] = useState(false);
     //react toaster alert
@@ -32,7 +34,17 @@ const Login = () => {
                 console.log(user);
                 setUser(user);
                 form.reset();
-                signInSuccess()
+                signInSuccess();
+                //auto navigate
+                setTimeout(()=>{
+                   
+                   if(location.state){
+                      navigate(location.state)
+                   }else{
+                    navigate('/')
+                   }
+                   
+                },3000)
                 // ...
             })
             .catch((error) => {
@@ -56,7 +68,17 @@ const Login = () => {
             const user = result.user;
             setUser(user);
             console.log(user)
-            signInSuccess()
+            signInSuccess();
+            //auto navigate
+            setTimeout(()=>{
+                   
+                if(location.state){
+                   navigate(location.state)
+                }else{
+                 navigate('/')
+                }
+                
+             },3000)
             // ...
           }).catch((error) => {
             // Handle Errors here.
@@ -77,7 +99,17 @@ const Login = () => {
             const user = result.user;
             setUser(user);
             console.log(user)
-            signInSuccess()
+            signInSuccess();
+            //auto navigate
+            setTimeout(()=>{
+                   
+                if(location.state){
+                   navigate(location.state)
+                }else{
+                 navigate('/')
+                }
+                
+             },3000)
             // ...
           }).catch((error) => {
             // Handle Errors here.

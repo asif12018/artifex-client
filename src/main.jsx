@@ -14,6 +14,8 @@ import Login from './pages/login/Login.jsx';
 import Addproduct from './pages/Addproduct.jsx';
 import ItemDetails from './pages/ItemDetails.jsx';
 import AllItems from './pages/AllItems.jsx';
+import PrivateRoutes from './components/protectedRoute/PrivateRoutes.jsx';
+import MyItems from './pages/MyItems.jsx';
 
 
 
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/add",
-        element:<Addproduct></Addproduct>
+        element:<PrivateRoutes><Addproduct></Addproduct></PrivateRoutes>
       },
       {
         path:"/details/:id",
@@ -48,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path:"/items",
-        element:<AllItems></AllItems>
+        element:<PrivateRoutes><AllItems></AllItems></PrivateRoutes>
+      },
+      {
+        path:'/myItems',
+        element:<PrivateRoutes><MyItems></MyItems></PrivateRoutes>
       }
     ]
   },
