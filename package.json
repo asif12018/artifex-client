@@ -13,6 +13,8 @@
     "firebase": "^10.11.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "particles-bg": "^2.5.5",
+    "randomcolor": "^0.6.2",
     "react": "^18.2.0",
     "react-awesome-slider": "^2.2.1",
     "react-dom": "^18.2.0",

@@ -17,6 +17,8 @@ import AllItems from './pages/AllItems.jsx';
 import PrivateRoutes from './components/protectedRoute/PrivateRoutes.jsx';
 import MyItems from './pages/MyItems.jsx';
 import EditProduct from './pages/EditProduct';
+import ErrorPage from './pages/ErrorPages';
+import FilterByCategory from './pages/FilterByCategory.jsx';
 
 
 
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -61,6 +64,10 @@ const router = createBrowserRouter([
         path:'/edit/:id',
         element:<EditProduct></EditProduct>,
         loader: ({params})=>fetch(`http://localhost:5000/items/${params.id}`)
+      },
+      {
+        path:'/filter/:category',
+        element:<FilterByCategory></FilterByCategory>
       }
     ]
   },

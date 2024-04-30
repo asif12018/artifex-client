@@ -40,6 +40,7 @@ const Navbar = () => {
             user && <li><NavLink to={'/myItems'}>my items</NavLink></li>
         }
         <li><NavLink to={'/register'}>register</NavLink></li>
+        <li><NavLink to={'/login'}>Log in</NavLink></li>
         
 
     </>
