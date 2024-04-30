@@ -50,6 +50,7 @@ const ItemDetails = () => {
                 <p><span className="font-bold">Time to Process:</span>{process}</p>
                 <p><span className="font-bold">Stock:</span>{stock}</p>
                 <p><span className="font-bold">Seller:</span>{name}</p>
+                <p><span className="font-bold">Seller Email:</span>{email}</p>
                 </div>
               
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">

@@ -25,6 +25,7 @@ const CardContainer = ({item}) => {
                 <p><span className="font-bold">Time to Process:</span>{process}</p>
                 <p><span className="font-bold">Stock:</span>{stock}</p>
                 <p><span className="font-bold">Seller:</span>{name}</p>
+                <p><span className="font-bold">Seller Email:</span>{email}</p>
                 </div>
                 <div className="card-actions ">
                     <Link to={`/details/${_id}`} className="btn bg-[#2d8e82] text-white">View Details</Link>

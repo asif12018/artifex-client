@@ -11,6 +11,7 @@ const Addproduct = () => {
 
     //add item function
     const handleAddItems = e => {
+        
         e.preventDefault();
         const form = e.target;
         const itemName = form.item_name.value;
@@ -24,6 +25,7 @@ const Addproduct = () => {
         const stock = form.stock.value;
         const email = user.email;
         const name = user.displayName;
+        
         const itemData = {name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email}
         // console.log(itemData);
         fetch(`http://localhost:5000/`,{
@@ -161,6 +163,8 @@ const Addproduct = () => {
                             <input type="text" name="stock" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the stock status" required/>
 
                         </div>
+
+                        
 
 
 

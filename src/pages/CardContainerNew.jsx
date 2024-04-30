@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { CiStar } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
-const SingleItem = ({ item, isMyItem, handleDeletItem, setItem }) => {
-    const { name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email, _id } = item;
-    //edit item function
-    
+
+const CardContainerNew = ({item}) => {
+    console.log(item)
+    const {name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email, _id} = item;
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
-            <figure><img className="h-[300px] w-[300px]" src={photo}  /></figure>
+        <div className="card card-compact bg-base-100 shadow-xl py-10" >
+            <figure><img className="h-[250px] rounded-2xl" src={photo} alt="Shoes" /></figure>
+            
             <div className="card-body">
                 <h2 className="card-title">{itemName}</h2>
                 <div className="badge bg-[#2d8e82] text-white p-2">{subcategory}</div>
@@ -25,22 +27,12 @@ const SingleItem = ({ item, isMyItem, handleDeletItem, setItem }) => {
                 <p><span className="font-bold">Seller:</span>{name}</p>
                 <p><span className="font-bold">Seller Email:</span>{email}</p>
                 </div>
-                <div className="card-actions justify-center">
-                    <Link to={`/details/${_id}`}  className="btn bg-[#2d8e82] w-full text-white">View Details</Link>
-                </div>
-                <div>
-                    {
-                        isMyItem && <Link to={`/edit/${item._id}`} className="btn bg-[#ffa722] w-full text-white">Edit this item</Link>
-                    }
-                </div>
-                <div>
-                    {
-                        isMyItem && <button onClick={()=>handleDeletItem(_id)} className="btn w-full bg-red-500 text-white">Delete this item</button>
-                    }
+                <div className="card-actions ">
+                    <Link to={`/details/${_id}`} className="btn bg-[#2d8e82] text-white">View Details</Link>
                 </div>
             </div>
         </div>
     );
 };
 
-export default SingleItem;
+export default CardContainerNew;

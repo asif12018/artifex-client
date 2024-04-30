@@ -1,12 +1,14 @@
 import { Typewriter } from 'react-simple-typewriter'
 import { Fade } from "react-awesome-reveal";
+import Tilt from 'react-parallax-tilt';
 const Banner = () => {
   
     return (
-        <Fade>
+        <Tilt>
+          <Fade>
           <div className="carousel w-full min-h-[500px] my-5 animate__animated animate__zoomIn">
         <div id="slide1" className="carousel-item relative w-full flex flex-col gap-3 justify-center items-center bg-[url('https://i.postimg.cc/fRf09gYW/pexels-sadi-gokpinar-321165339-18025831.jpg')]  rounded-2xl bg-no-repeat bg-cover bg-center" style={{backgroundColor:'#3C5B6F66', zIndex:'10'}}>
-        <h1 className="text-xl md:text-4xl  font-bold text-white">Elevate Your Space with
+        <h1 className="text-xl md:text-2xl lg:text-4xl  font-bold text-white">Elevate Your Space with
         <Typewriter
     words={[' Handcrafted Ceramics and Pottery']}
     cursor
@@ -17,7 +19,7 @@ const Banner = () => {
     loop={true}
 />
          </h1>
-          <p className="text-white text-[10px] md:text-lg">Explore elegance in our ceramics, crafted by artisans for quality, perfect for your home.</p>
+          <p className="text-white text-[10px] md:text-[15px] lg:text-lg">Explore elegance in our ceramics, crafted by artisans for quality, perfect for your home.</p>
           <a href="#state" className="btn">Expore more</a>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide4" className="btn btn-circle">❮</a> 
@@ -78,6 +80,7 @@ const Banner = () => {
         </div>
       </div>
         </Fade>
+        </Tilt>
     );
 };
 

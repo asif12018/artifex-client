@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardContainer from "./CardContainer";
+
+import CardContainerNew from "./CardContainerNew";
 
 
 const FilterByCategory = () => {
+    const[loading, setloading] = useState(false);
     const shortName = useParams()
-   
+    
     const [filterData, setFilterData] = useState([]);
     useEffect(()=>{
         fetch('http://localhost:5000/items')
@@ -13,15 +15,21 @@ const FilterByCategory = () => {
         .then(data =>{
             const shortedData = data.filter(data => data.subcategory == shortName.category);
             setFilterData(shortedData);
+            console.log(shortedData)
+            setTimeout(()=>{
+                setloading(true);
+            },[2000])
         })
-    })
+        
+    },[])
     
     return (
         <div>
-            <h2 className="text-xl md:text-3xl font-bold">Items Shorted By Category: {shortName.category}</h2>
+          
+          <h2 className="text-xl md:text-3xl font-bold">Items Shorted By Category: {shortName.category}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {
-                filterData.map((item, index) => <CardContainer key={index} item={item}></CardContainer>)
+                filterData.map((item, index) => <CardContainerNew key={index} item={item}></CardContainerNew>)
             }
             </div>
         </div>

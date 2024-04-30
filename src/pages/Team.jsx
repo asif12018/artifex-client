@@ -1,6 +1,10 @@
 import ParticlesBg from 'particles-bg'
+import Tilt from 'react-parallax-tilt';
+
+import { useState } from 'react';
 
 const Team = () => {
+  
   let config = {
     color:["random", "#ff0000"]
   }
@@ -40,30 +44,35 @@ const Team = () => {
   }
   
   function TeamMember({ name, role, imgSrc }) {
+    const [scale, setScale] = useState(1.2);
     return (
+     
       <div className="mb-12 lg:mb-0">
-        <img className="mx-auto mb-6 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]" src={imgSrc} alt="avatar" />
-        <h5 className="mb-4 text-lg font-bold">{name}</h5>
-        <p className="mb-6">{role}</p>
-        <ul className="mx-auto flex list-inside justify-center">
-          <a href="#!" className="px-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 text-primary dark:text-primary-400">
-              {/* GitHub SVG */}
-            </svg>
-          </a>
-          <a href="#!" className="px-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 text-primary dark:text-primary-400">
-              {/* Twitter SVG */}
-            </svg>
-          </a>
-          <a href="#!" className="px-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-3.5 w-3.5 text-primary dark:text-primary-400">
-              {/* LinkedIn SVG */}
-            </svg>
-          </a>
-        </ul>
-        <ParticlesBg   type="cobweb" bg={true} />
-      </div>
+         <Tilt scale={scale} transitionSpeed={2500}>
+         <img className="mx-auto mb-6 rounded-lg shadow-lg dark:shadow-black/20 w-[150px]" src={imgSrc} alt="avatar" />
+        </Tilt>
+      
+      <h5 className="mb-4 text-lg font-bold">{name}</h5>
+      <p className="mb-6">{role}</p>
+      <ul className="mx-auto flex list-inside justify-center">
+        <a href="#!" className="px-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 text-primary dark:text-primary-400">
+            {/* GitHub SVG */}
+          </svg>
+        </a>
+        <a href="#!" className="px-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4 text-primary dark:text-primary-400">
+            {/* Twitter SVG */}
+          </svg>
+        </a>
+        <a href="#!" className="px-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-3.5 w-3.5 text-primary dark:text-primary-400">
+            {/* LinkedIn SVG */}
+          </svg>
+        </a>
+      </ul>
+      <ParticlesBg   type="cobweb" bg={true} />
+    </div>
     );
 };
 

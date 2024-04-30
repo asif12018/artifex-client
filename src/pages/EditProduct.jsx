@@ -45,8 +45,10 @@ const EditProduct = () => {
         if(!stock){
             stock = item.stock;
         }
-        
-        const itemData = { photo, subcategory, description, price, rating, customize, process, stock, itemName}
+        const email = item.email;
+        const name = item.displayName;
+       
+        const itemData = { photo, subcategory, description, price, rating, customize, process, stock, itemName, email, name}
         fetch(`http://localhost:5000/edit/${item._id}`,{
             method:"PATCH",
             headers:{
@@ -182,6 +184,8 @@ const EditProduct = () => {
                             <input type="text" name="stock" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter the stock status" />
 
                         </div>
+
+                        
 
 
 

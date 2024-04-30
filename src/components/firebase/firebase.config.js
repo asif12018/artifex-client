@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+require('dotenv').config()
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -6,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB04iz5gSM4fHELq95XHpFsf5uGeag9Nbo",
-  authDomain: "all-full-stack-practice-app.firebaseapp.com",
-  projectId: "all-full-stack-practice-app",
-  storageBucket: "all-full-stack-practice-app.appspot.com",
-  messagingSenderId: "529995816052",
-  appId: "1:529995816052:web:1da8b9d9da2caf705ec521"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSENGING_ID,
+  appId: process.env.APP_ID
 };
 
 // Initialize Firebase
