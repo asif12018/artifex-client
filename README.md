@@ -1,8 +1,26 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Title
 
-Currently, two official plugins are available:
+This is a full stack project. this project is all about e-commerce site based on Clay Sculpture category
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+## Features
+
+- Light/dark mode toggle
+- Live previews
+- Fullscreen mode
+- Cross platform
+- user can create account using email and password
+- user can log in using google and github
+- user can upload a product and  edit or delete there product
+- there are dynamic category section user can see the product filter by category
+- there are filter that helps you to filter product based on customizable
+
+
+
+
+## Demo
+
+live site: https://all-full-stack-practice-app.web.app/
+
