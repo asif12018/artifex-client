@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 
 const EditProduct = () => {
     const item = useLoaderData();
-    console.log(item);
+    
     //edit item function
     const handleEditItem = (e) =>{
         e.preventDefault();
@@ -47,7 +47,23 @@ const EditProduct = () => {
         }
         
         const itemData = { photo, subcategory, description, price, rating, customize, process, stock, itemName}
-        console.log(itemData)
+        fetch(`http://localhost:5000/edit/${item._id}`,{
+            method:"PATCH",
+            headers:{
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(itemData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            form.reset();
+            console.log(data)
+            Swal.fire({
+                title: "Updated",
+                text: "item updated successfully",
+                icon: "success"
+              });
+        })
     }
     return (
         <div>
