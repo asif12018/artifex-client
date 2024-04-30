@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const SingleCategory = ({item}) => {
     const [newType, setNewType] = useState()
-    const color = ['ball', 'circle', 'square', 'fountain']
+    const color = ['ball', 'circle', 'square', 'fountain', 'custom','thick']
     useEffect(()=>{
-        const index = Math.round(Math.random() * 4)
+        const index = Math.round(Math.random() * 7)
         setNewType(color[index])
     },[])
     return (

@@ -75,7 +75,7 @@ const MyItems = () => {
     
     return (
         <div>
-            <h1>this is my item page</h1>
+            <h1 className="text-2xl font-bold">User total items: {items.length}</h1>
 
             <div className="flex flex-col gap-3">
              {
