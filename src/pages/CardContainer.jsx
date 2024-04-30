@@ -8,7 +8,7 @@ const CardContainer = ({item}) => {
     
     const {name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email, _id} = item;
     return (
-        <div className="card card-compact bg-base-100 shadow-xl py-10">
+        <div className="card card-compact bg-base-100 shadow-xl py-10" data-aos="fade-down">
             <figure><img className="h-[250px] rounded-2xl" src={photo} alt="Shoes" /></figure>
             
             <div className="card-body">

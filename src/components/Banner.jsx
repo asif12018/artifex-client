@@ -1,9 +1,10 @@
 import { Typewriter } from 'react-simple-typewriter'
-
+import { Fade } from "react-awesome-reveal";
 const Banner = () => {
   
     return (
-        <div className="carousel w-full min-h-[500px] my-5 animate__animated animate__zoomIn">
+        <Fade>
+          <div className="carousel w-full min-h-[500px] my-5 animate__animated animate__zoomIn">
         <div id="slide1" className="carousel-item relative w-full flex flex-col gap-3 justify-center items-center bg-[url('https://i.postimg.cc/fRf09gYW/pexels-sadi-gokpinar-321165339-18025831.jpg')]  rounded-2xl bg-no-repeat bg-cover bg-center" style={{backgroundColor:'#3C5B6F66', zIndex:'10'}}>
         <h1 className="text-xl md:text-4xl  font-bold text-white">Elevate Your Space with
         <Typewriter
@@ -76,6 +77,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
+        </Fade>
     );
 };
 
