@@ -28,7 +28,7 @@ const Addproduct = () => {
         
         const itemData = {name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email}
         // console.log(itemData);
-        fetch(`http://localhost:5000/`,{
+        fetch(`https://artifex-server-site.vercel.app/`,{
             method: 'POST',
             headers:{
                 'content-type':'application/json'

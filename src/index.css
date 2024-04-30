@@ -3,7 +3,7 @@
 @tailwind utilities;
 @import '../ReactParallaxTilt.css';
 
-.tilt-scale {
+/* .tilt-scale {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,4 +32,4 @@
       margin-right: 7px;
     }
   }
-}
+} */

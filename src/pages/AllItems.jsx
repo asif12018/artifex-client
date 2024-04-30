@@ -7,7 +7,7 @@ const AllItems = () => {
 
     // Getting data from database API
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch('https://artifex-server-site.vercel.app/items')
             .then(res => res.json())
             .then(data => {
                 setItems(data);

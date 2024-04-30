@@ -5,7 +5,7 @@ import SingleCategory from "./SingleCategory";
 const CategorySection = () => {
     const [categroyList, setCategoryList] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch('https://artifex-server-site.vercel.app/items')
             .then(res => res.json())
             .then(data => {
                 const uniqueSubcategories = {};

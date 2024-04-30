@@ -35,7 +35,7 @@ const MyItems = () => {
 
             if (result.isConfirmed) {
               //sending data to delete
-              fetch(`http://localhost:5000/delete/${id}`,{
+              fetch(`https://artifex-server-site.vercel.app/delete/${id}`,{
                 method:'DELETE',
                 headers: {
                     'content-type':'application'
@@ -68,7 +68,7 @@ const MyItems = () => {
           });
     }
     useEffect(()=>{
-        fetch('http://localhost:5000/items')
+        fetch('https://artifex-server-site.vercel.app/items')
         .then(res => res.json())
         .then(data =>{
             const filteredData = data.filter(data => data.email == user.email);

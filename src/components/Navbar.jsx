@@ -32,6 +32,7 @@ const Navbar = () => {
     },[])
     //context api data
     const {user, userSignOut, setUser} = useContext(AuthContext)
+    console.log(user)
     const navlinks = <>
         <li><NavLink to={'/'}>home</NavLink ></li>
         <li><NavLink to={'/items'}>All items</NavLink></li>
