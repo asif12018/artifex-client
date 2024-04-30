@@ -2,7 +2,7 @@
 import { CiStar } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
-const SingleItem = ({ item, isMyItem }) => {
+const SingleItem = ({ item, isMyItem, handleDeletItem }) => {
     const { name, photo, subcategory, description, price, rating, customize, process, stock, itemName, email, _id } = item;
     //edit item function
     
@@ -29,6 +29,11 @@ const SingleItem = ({ item, isMyItem }) => {
                 <div>
                     {
                         isMyItem && <Link to={`/edit/${item._id}`} className="btn bg-[#ffa722] w-full text-white">Edit this item</Link>
+                    }
+                </div>
+                <div>
+                    {
+                        isMyItem && <button onClick={()=>handleDeletItem(_id)} className="btn w-full bg-red-500 text-white">Delete this item</button>
                     }
                 </div>
             </div>
