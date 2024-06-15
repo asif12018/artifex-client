@@ -49,7 +49,7 @@ const EditProduct = () => {
         const name = item.displayName;
        
         const itemData = { photo, subcategory, description, price, rating, customize, process, stock, itemName, email, name}
-        fetch(`https://artifex-server-site.vercel.app/edit/${item._id}`,{
+        fetch(`https://artifex-server-brand-new-clone.vercel.app/edit/${item._id}`,{
             method:"PATCH",
             headers:{
                 "content-type":"application/json"

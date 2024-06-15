@@ -7,7 +7,7 @@ const SingleItem = ({ item, isMyItem, handleDeletItem, setItem }) => {
     //edit item function
     
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card card-side bg-base-100 shadow-xl flex flex-col md:flex-row">
             <figure><img className="h-[300px] w-[300px]" src={photo}  /></figure>
             <div className="card-body">
                 <h2 className="card-title">{itemName}</h2>

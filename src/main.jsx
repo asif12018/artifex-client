@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       {
         path:"/details/:id",
         element:<PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
-        loader:({params})=> fetch(`https://artifex-server-site.vercel.app/items/${params.id}`)
+        loader:({params})=> fetch(`https://artifex-server-brand-new-clone.vercel.app/items/${params.id}`)
       },
       {
         path:"/items",
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       {
         path:'/edit/:id',
         element:<EditProduct></EditProduct>,
-        loader: ({params})=>fetch(`https://artifex-server-site.vercel.app/items/${params.id}`)
+        loader: ({params})=>fetch(`https://artifex-server-brand-new-clone.vercel.app/items/${params.id}`)
       },
       {
         path:'/filter/:category',

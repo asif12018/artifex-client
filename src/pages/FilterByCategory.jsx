@@ -10,7 +10,7 @@ const FilterByCategory = () => {
     
     const [filterData, setFilterData] = useState([]);
     useEffect(()=>{
-        fetch('https://artifex-server-site.vercel.app/items')
+        fetch('https://artifex-server-brand-new-clone.vercel.app/items')
         .then(res => res.json())
         .then(data =>{
             const shortedData = data.filter(data => data.subcategory == shortName.category);

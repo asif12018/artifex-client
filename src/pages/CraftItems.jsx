@@ -11,7 +11,7 @@ const CraftItems = () => {
     const [items, setItems] = useState([]);
     //getting data from database api
     useEffect(()=>{
-       fetch('https://artifex-server-site.vercel.app/items')
+       fetch('https://artifex-server-brand-new-clone.vercel.app/items')
        .then(res => res.json())
        .then(data => setItems(data))
     },[])
