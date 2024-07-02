@@ -17,6 +17,14 @@ This is a full stack project. this project is all about e-commerce site based on
 - there are dynamic category section user can see the product filter by category
 - there are filter that helps you to filter product based on customizable
 
+- ## Teachnolgy Used:
+- React
+- firebase
+- express
+- node.js
+- tailwind
+- react search
+
 ##How To Run locally
 - first run this command  $git clone https://github.com/asif12018/artifex-client.git
 - then run this comand $npm i
